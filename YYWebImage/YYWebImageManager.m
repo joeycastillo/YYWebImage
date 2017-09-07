@@ -138,10 +138,12 @@ static UIApplication *_YYSharedApplication() {
     UIApplication *app = _YYSharedApplication();
     if (!app) return;
     
+#if TARGET_OS_IOS
     NSNumber *visiable = timer.userInfo;
     if (app.networkActivityIndicatorVisible != visiable.boolValue) {
         [app setNetworkActivityIndicatorVisible:visiable.boolValue];
     }
+#endif
     [timer invalidate];
 }
 
